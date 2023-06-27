@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright 2017, Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags. See the copyright.txt file in the
+  ~ distribution for a full listing of individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<application-client version="7"
+                    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application-client_7.xsd">
+    <env-entry>
+        <env-entry-name>stringValue</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>EnvEntry</env-entry-value>
+        <injection-target>
+            <injection-target-class>org.jboss.as.test.integration.ee.appclient.basic.DescriptorClientMain</injection-target-class>
+            <injection-target-name>envEntry</injection-target-name>
+        </injection-target>
+    </env-entry>
+    <ejb-ref>
+        <ejb-ref-name>AppClientStateSingleton</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <remote>org.jboss.as.test.integration.ee.appclient.basic.AppClientSingletonRemote</remote>
+        <injection-target>
+            <injection-target-class>org.jboss.as.test.integration.ee.appclient.basic.DescriptorClientMain</injection-target-class>
+            <injection-target-name>appClientSingletonRemote</injection-target-name>
+        </injection-target>
+    </ejb-ref>
+</application-client>

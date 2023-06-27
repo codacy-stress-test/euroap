@@ -1,0 +1,75 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2014, Red Hat Inc., and individual contributors as indicated
+ * by the @authors tag. See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+package org.jboss.as.webservices.deployers;
+
+import org.jboss.as.server.deployment.Attachments;
+import org.jboss.as.server.deployment.DeploymentPhaseContext;
+import org.jboss.as.server.deployment.DeploymentUnit;
+import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
+import org.jboss.as.server.deployment.DeploymentUnitProcessor;
+import org.jboss.as.server.deployment.module.ModuleDependency;
+import org.jboss.as.server.deployment.module.ModuleSpecification;
+import org.jboss.modules.Module;
+import org.jboss.modules.ModuleLoader;
+import org.jboss.wsf.spi.deployment.Endpoint;
+
+/**
+ * A DUP that sets the WS dependencies
+ *
+ * @author <a href="mailto:alessio.soldano@jboss.com">Alessio Soldano</a>
+ * @author <a href="mailto:ropalka@redhat.com">Richard Opalka</a>
+ */
+public final class WSDependenciesProcessor implements DeploymentUnitProcessor {
+
+    public static final String JBOSSWS_API = "org.jboss.ws.api";
+    public static final String JBOSSWS_SPI = "org.jboss.ws.spi";
+    public static final String[] JAVAEE_APIS = {
+            "jakarta.xml.ws.api",
+            "jakarta.xml.soap.api"
+    };
+    public static final String XERCES_IMPL = "org.apache.xerces";
+
+    private final boolean addJBossWSDependencies;
+
+    public WSDependenciesProcessor(boolean addJBossWSDependencies) {
+        this.addJBossWSDependencies = addJBossWSDependencies;
+    }
+
+    public void deploy(DeploymentPhaseContext phaseContext) throws DeploymentUnitProcessingException {
+        final DeploymentUnit unit = phaseContext.getDeploymentUnit();
+        final ModuleLoader moduleLoader = Module.getBootModuleLoader();
+        final ModuleSpecification moduleSpec = unit.getAttachment(Attachments.MODULE_SPECIFICATION);
+        if (addJBossWSDependencies) {
+            moduleSpec.addSystemDependency(new ModuleDependency(moduleLoader, JBOSSWS_API, false, true, true, false));
+            moduleSpec.addSystemDependency(new ModuleDependency(moduleLoader, JBOSSWS_SPI, false, true, true, false));
+        }
+        for(String api : JAVAEE_APIS) {
+            moduleSpec.addSystemDependency(new ModuleDependency(moduleLoader, api, false, false, true, false));
+        }
+
+        //After jboss modules 2.0, the xerces module is not added and this is required for jaxb 2.3.x(EE8) to pass the TCK
+        //But this is not needed for jaxb 3.x in WildFly Preview(EE10)
+        if (Endpoint.class.getPackage().getImplementationVersion().startsWith("3")) {
+            moduleSpec.addSystemDependency(new ModuleDependency(moduleLoader, XERCES_IMPL, true, false, true, false));
+        }
+    }
+}
