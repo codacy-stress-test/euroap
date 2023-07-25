@@ -37,7 +37,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
     -->
-    <version>29.0.0.Final-SNAPSHOT</version>
+    <version>30.0.0.Beta1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -144,9 +144,9 @@
         <ee.dist.product.release.version>${full.dist.product.release.version}</ee.dist.product.release.version>
         <ee.maven.groupId>${project.groupId}</ee.maven.groupId>
         <ee.maven.version>${project.version}</ee.maven.version>
-        <product.docs.server.version>29</product.docs.server.version>
+        <product.docs.server.version>30</product.docs.server.version>
         <!-- A short variant of product.release.version used in 'startsWith' tests done by dist verification logic -->
-        <verifier.product.release.version>29.0</verifier.product.release.version>
+        <verifier.product.release.version>30.0</verifier.product.release.version>
 
         <!-- Galleon -->
         <galleon.fork.embedded>true</galleon.fork.embedded>
@@ -499,21 +499,21 @@
         <version.org.hibernate.search>6.2.0.Final</version.org.hibernate.search>
         <version.org.hibernate.validator>8.0.0.Final</version.org.hibernate.validator>
         <version.org.hornetq>2.4.9.Final</version.org.hornetq>
-        <version.org.infinispan>14.0.12.Final</version.org.infinispan>
+        <version.org.infinispan>14.0.13.Final</version.org.infinispan>
         <version.org.infinispan.protostream>4.6.2.Final</version.org.infinispan.protostream>
         <version.org.jasypt>1.9.3</version.org.jasypt>
-        <version.org.jberet>2.1.1.Final</version.org.jberet>
+        <version.org.jberet>2.1.2.Final</version.org.jberet>
         <version.org.jboss.activemq.artemis.integration>2.0.0.Final</version.org.jboss.activemq.artemis.integration>
         <version.org.jboss.common.jboss-common-beans>2.0.1.Final</version.org.jboss.common.jboss-common-beans>
         <version.org.jboss.ejb-client>5.0.5.Final</version.org.jboss.ejb-client>
         <version.org.jboss.ejb3.ext-api>2.3.0.Final</version.org.jboss.ejb3.ext-api>
         <version.org.jboss.genericjms>3.0.0.Final</version.org.jboss.genericjms>
-        <version.org.jboss.hal.console>3.6.10.Final</version.org.jboss.hal.console>
+        <version.org.jboss.hal.console>3.6.11.Final</version.org.jboss.hal.console>
         <version.org.jboss.iiop-client>2.0.1.Final</version.org.jboss.iiop-client>
         <version.org.jboss.ironjacamar>3.0.3.Final</version.org.jboss.ironjacamar>
         <version.org.jboss.jboss-transaction-spi>8.0.0.Final</version.org.jboss.jboss-transaction-spi>
         <version.org.jboss.metadata>16.0.0.Final</version.org.jboss.metadata>
-        <version.org.jboss.mod_cluster>2.0.1.Final</version.org.jboss.mod_cluster>
+        <version.org.jboss.mod_cluster>2.0.2.Final</version.org.jboss.mod_cluster>
         <version.org.jboss.narayana>6.0.1.Final</version.org.jboss.narayana>
         <version.org.jboss.openjdk-orb>9.0.2.Final</version.org.jboss.openjdk-orb>
         <version.org.jboss.resteasy>6.2.4.Final</version.org.jboss.resteasy>
@@ -541,11 +541,11 @@
         <version.org.jipijapa>1.0.1.Final</version.org.jipijapa>
         <version.org.jvnet.staxex>2.1.0</version.org.jvnet.staxex>
         <version.org.keycloak.keycloak-saml-wildfly-subsystem>18.0.2</version.org.keycloak.keycloak-saml-wildfly-subsystem>
-        <version.org.kohsuke.metainf-services>1.8</version.org.kohsuke.metainf-services>
+        <version.org.kohsuke.metainf-services>1.11</version.org.kohsuke.metainf-services>
         <version.org.opensaml.opensaml>4.2.0</version.org.opensaml.opensaml>
         <version.org.ow2.asm>9.5</version.org.ow2.asm>
         <version.org.reactivestreams>1.0.4</version.org.reactivestreams>
-        <version.org.wildfly.core>21.1.0.Beta2</version.org.wildfly.core>
+        <version.org.wildfly.core>21.1.0.Final</version.org.wildfly.core>
         <version.org.wildfly.http-client>2.0.2.Final</version.org.wildfly.http-client>
         <version.org.wildfly.naming-client>2.0.1.Final</version.org.wildfly.naming-client>
         <version.org.wildfly.security.elytron-mp>2.0.0.Final</version.org.wildfly.security.elytron-mp>

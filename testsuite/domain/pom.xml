@@ -33,7 +33,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>29.0.0.Final-SNAPSHOT</version>
+        <version>30.0.0.Beta1-SNAPSHOT</version>
     </parent>
 
     <artifactId>wildfly-testsuite-integration-domain</artifactId>
@@ -83,12 +83,6 @@
         <dependency>
             <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-process-controller</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>*</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.wildfly.core</groupId>
@@ -97,12 +91,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>wildfly-messaging-activemq-injection</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>*</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -111,12 +99,6 @@
         <dependency>
             <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-host-controller</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jboss.shrinkwrap</groupId>
@@ -129,12 +111,6 @@
         <dependency>
             <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-controller</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.wildfly.core</groupId>
@@ -147,12 +123,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>wildfly-security</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
