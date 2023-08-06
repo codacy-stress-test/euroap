@@ -252,6 +252,13 @@
         <testsuite.ee.galleon.pack.groupId>${full.maven.groupId}</testsuite.ee.galleon.pack.groupId>
         <testsuite.ee.galleon.pack.artifactId>wildfly-galleon-pack</testsuite.ee.galleon.pack.artifactId>
         <testsuite.ee.galleon.pack.version>${full.maven.version}</testsuite.ee.galleon.pack.version>
+        <!-- Galleon feature pack to use in testsuite provisioning executions that provide content
+             that *cannot* be obtained solely from the wildfly-ee-galleon-pack or its dependencies.
+             Test jobs can override this using -D to test using a different feature pack.
+        -->
+        <testsuite.full.galleon.pack.groupId>${full.maven.groupId}</testsuite.full.galleon.pack.groupId>
+        <testsuite.full.galleon.pack.artifactId>wildfly-galleon-pack</testsuite.full.galleon.pack.artifactId>
+        <testsuite.full.galleon.pack.version>${full.maven.version}</testsuite.full.galleon.pack.version>
 
         <!-- Properties that set the phase used for different plugin executions.
              Profiles can override the values here to enable/disable executions.
@@ -407,11 +414,11 @@
         <version.io.perfmark>0.23.0</version.io.perfmark>
         <version.io.reactivex.rxjava2>2.2.21</version.io.reactivex.rxjava2>
         <version.io.reactivex.rxjava3>3.1.6</version.io.reactivex.rxjava3>
-        <version.io.smallrye.open-api>3.4.0</version.io.smallrye.open-api>
+        <version.io.smallrye.open-api>3.5.0</version.io.smallrye.open-api>
         <version.io.smallrye.reactive-utils>2.6.0</version.io.smallrye.reactive-utils>
         <version.io.smallrye.smallrye-common>2.1.0</version.io.smallrye.smallrye-common>
         <version.io.smallrye.smallrye-config>3.3.0</version.io.smallrye.smallrye-config>
-        <version.io.smallrye.smallrye-fault-tolerance>6.2.4</version.io.smallrye.smallrye-fault-tolerance>
+        <version.io.smallrye.smallrye-fault-tolerance>6.2.6</version.io.smallrye.smallrye-fault-tolerance>
         <version.io.smallrye.smallrye-health>4.0.2</version.io.smallrye.smallrye-health>
         <version.io.smallrye.smallrye-jwt>4.2.1</version.io.smallrye.smallrye-jwt>
         <version.io.smallrye.smallrye-mutiny>2.1.0</version.io.smallrye.smallrye-mutiny>
@@ -508,7 +515,7 @@
         <version.org.jboss.ejb-client>5.0.5.Final</version.org.jboss.ejb-client>
         <version.org.jboss.ejb3.ext-api>2.3.0.Final</version.org.jboss.ejb3.ext-api>
         <version.org.jboss.genericjms>3.0.0.Final</version.org.jboss.genericjms>
-        <version.org.jboss.hal.console>3.6.11.Final</version.org.jboss.hal.console>
+        <version.org.jboss.hal.console>3.6.12.Final</version.org.jboss.hal.console>
         <version.org.jboss.iiop-client>2.0.1.Final</version.org.jboss.iiop-client>
         <version.org.jboss.ironjacamar>3.0.3.Final</version.org.jboss.ironjacamar>
         <version.org.jboss.jboss-transaction-spi>8.0.0.Final</version.org.jboss.jboss-transaction-spi>
@@ -534,7 +541,7 @@
         <version.org.jboss.xnio.netty.netty-xnio-transport>0.1.9.Final</version.org.jboss.xnio.netty.netty-xnio-transport>
         <version.org.jctools.jctools-core>2.1.2</version.org.jctools.jctools-core>
         <version.org.jetbrains.kotlin>1.7.10</version.org.jetbrains.kotlin>
-        <version.org.jgroups>5.2.14.Final</version.org.jgroups>
+        <version.org.jgroups>5.2.17.Final</version.org.jgroups>
         <version.org.jgroups.aws>3.0.0.Final</version.org.jgroups.aws>
         <version.org.jgroups.azure>2.0.2.Final</version.org.jgroups.azure>
         <version.org.jgroups.kubernetes>2.0.1.Final</version.org.jgroups.kubernetes>
@@ -581,9 +588,9 @@
             </dependency>
 
             <dependency>
-                <groupId>${ee.maven.groupId}</groupId>
+                <groupId>${full.maven.groupId}</groupId>
                 <artifactId>wildfly-common-expansion-dependency-management</artifactId>
-                <version>${ee.maven.version}</version>
+                <version>${full.maven.version}</version>
                 <type>pom</type>
             </dependency>
 
@@ -728,9 +735,9 @@
             </dependency>
 
             <dependency>
-                <groupId>${ee.maven.groupId}</groupId>
+                <groupId>${full.maven.groupId}</groupId>
                 <artifactId>wildfly-standard-expansion-bom</artifactId>
-                <version>${ee.maven.version}</version>
+                <version>${full.maven.version}</version>
                 <type>pom</type>
             </dependency>
 
@@ -1412,6 +1419,7 @@
             <properties>
                 <wildfly.build.output.dir>preview/dist/target/${server.output.dir.prefix}-preview-${server.output.dir.version}</wildfly.build.output.dir>
                 <testsuite.ee.galleon.pack.artifactId>wildfly-preview-feature-pack</testsuite.ee.galleon.pack.artifactId>
+                <testsuite.full.galleon.pack.artifactId>wildfly-preview-feature-pack</testsuite.full.galleon.pack.artifactId>
                 <!-- Disable the surefire tests (at least the default ones) for all modules except for
                      those where this profile turns them back on. -->
                 <surefire.default-test.phase>none</surefire.default-test.phase>
@@ -1427,6 +1435,7 @@
             </activation>
             <properties>
                 <testsuite.ee.galleon.pack.artifactId>wildfly-preview-feature-pack</testsuite.ee.galleon.pack.artifactId>
+                <testsuite.full.galleon.pack.artifactId>wildfly-preview-feature-pack</testsuite.full.galleon.pack.artifactId>
                 <!-- Disable the default surefire test execution for all modules except for
                      those where this profile turns them back on. -->
                 <surefire.default-test.phase>none</surefire.default-test.phase>
