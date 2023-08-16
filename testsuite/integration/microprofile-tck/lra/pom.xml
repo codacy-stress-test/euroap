@@ -98,6 +98,11 @@
             <artifactId>resteasy-client</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.smallrye.config</groupId>
+            <artifactId>smallrye-config</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -249,10 +254,10 @@
         </profile>
 
          <profile>
-            <id>bootablejar.ee9.profile</id>
+            <id>bootablejar.preview.profile</id>
             <activation>
                 <property>
-                    <name>ts.bootable.ee9</name>
+                    <name>ts.bootable.preview</name>
                 </property>
             </activation>
             <properties>
@@ -262,10 +267,10 @@
         </profile>
 
         <profile>
-            <id>ee9.test.profile</id>
+            <id>preview.test.profile</id>
             <activation>
                 <property>
-                    <name>ts.ee9</name>
+                    <name>ts.preview</name>
                 </property>
             </activation>
             <properties>
