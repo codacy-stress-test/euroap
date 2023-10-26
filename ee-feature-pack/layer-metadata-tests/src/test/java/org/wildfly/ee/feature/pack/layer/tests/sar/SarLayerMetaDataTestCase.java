@@ -1,3 +1,8 @@
+/*
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package org.wildfly.ee.feature.pack.layer.tests.sar;
 
 import org.junit.Test;
@@ -7,10 +12,10 @@ import java.nio.file.Path;
 
 public class SarLayerMetaDataTestCase extends AbstractLayerMetaDataTestCase {
     @Test
-    public void testMetaInfJbossServiceXml() throws Exception {
+    public void testMetaInfJbossServiceXml() {
         Path p = createArchiveBuilder(ArchiveType.SAR)
                 .addXml("jboss-service.xml", "")
                 .build();
-        checkLayersForArchive(p, "sar");
+        checkLayersForArchive(p, new ExpectedLayers("sar", "sar"));
     }
 }

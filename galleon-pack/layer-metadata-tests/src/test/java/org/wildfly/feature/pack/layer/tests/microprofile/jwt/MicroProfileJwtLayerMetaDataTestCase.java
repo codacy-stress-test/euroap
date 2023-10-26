@@ -1,3 +1,8 @@
+/*
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package org.wildfly.feature.pack.layer.tests.microprofile.jwt;
 
 import org.junit.Test;
@@ -8,29 +13,29 @@ import java.nio.file.Path;
 public class MicroProfileJwtLayerMetaDataTestCase extends AbstractLayerMetaDataTestCase {
 
     @Test
-    public void testAuthPackageAnnotation() throws Exception {
+    public void testAuthPackageAnnotation() {
         testSingleClassWar(MicroProfileJwtAuthPackageAnnotation.class);
     }
 
     @Test
-    public void testJwtPackageAnnotation() throws Exception {
+    public void testJwtPackageAnnotation() {
         testSingleClassWar(MicroProfileJwtJwtPackageAnnotation.class);
     }
 
     @Test
-    public void testJwtPackageClass() throws Exception {
+    public void testJwtPackageClass() {
         testSingleClassWar(MicroProfileJwtJwtPackageClass.class);
     }
 
     @Test
-    public void testJwtConfigPackageClass() throws Exception {
+    public void testJwtConfigPackageClass() {
         testSingleClassWar(MicroProfileJwtJwtConfigPackageAnnotation.class);
     }
 
-    private void testSingleClassWar(Class<?> clazz) throws Exception {
+    private void testSingleClassWar(Class<?> clazz) {
         Path p = createArchiveBuilder(ArchiveType.WAR)
                 .addClasses(clazz)
                 .build();
-        checkLayersForArchive(p, "microprofile-jwt");
+        checkLayersForArchive(p, new ExpectedLayers("microprofile-jwt", "microprofile-jwt"));
     }
 }

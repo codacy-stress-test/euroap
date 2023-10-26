@@ -1,23 +1,6 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2019, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
- *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
- *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 package org.wildfly.extension.microprofile.openapi.deployment;
@@ -28,13 +11,13 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Enumeration;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
@@ -78,12 +61,14 @@ import org.wildfly.clustering.service.ServiceConfigurator;
 import org.wildfly.clustering.service.ServiceSupplierDependency;
 import org.wildfly.clustering.service.SimpleServiceNameProvider;
 import org.wildfly.clustering.service.SupplierDependency;
+import org.wildfly.common.function.Functions;
 import org.wildfly.extension.microprofile.openapi.logging.MicroProfileOpenAPILogger;
 import org.wildfly.extension.undertow.Capabilities;
 import org.wildfly.extension.undertow.Host;
 import org.wildfly.extension.undertow.UndertowListener;
 import org.wildfly.extension.undertow.UndertowService;
 import org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService;
+import org.wildfly.security.manager.WildFlySecurityManager;
 
 /**
  * Configures a service that provides an OpenAPI model for a deployment.
@@ -96,6 +81,12 @@ public class OpenAPIModelServiceConfigurator extends SimpleServiceNameProvider i
     private static final String RELATIVE_SERVER_URLS = "mp.openapi.extensions.servers.relative";
     private static final String DEFAULT_TITLE = "Generated API";
     private static final Set<String> REQUISITE_LISTENERS = Collections.singleton("http");
+    private static final Iterable<AnnotationScanner> SCANNERS = WildFlySecurityManager.doUnchecked(new PrivilegedAction<>() {
+        @Override
+        public Iterable<AnnotationScanner> run() {
+            return ServiceLoader.load(AnnotationScanner.class, AnnotationScanner.class.getClassLoader()).stream().map(ServiceLoader.Provider::get).collect(Collectors.toList());
+        }
+    });
 
     static {
         // Set the static OASFactoryResolver eagerly avoiding the need perform TCCL service loading later
@@ -166,11 +157,9 @@ public class OpenAPIModelServiceConfigurator extends SimpleServiceNameProvider i
             }
         }
 
-        // Workaround  for https://github.com/smallrye/smallrye-open-api/issues/1508
-        ClassLoader scannerClassLoader = new CompositeClassLoader(List.of(AnnotationScanner.class.getClassLoader(), this.module.getClassLoader()));
-        builder.annotationsModel(OpenApiProcessor.modelFromAnnotations(config, scannerClassLoader, indexView));
-        builder.readerModel(OpenApiProcessor.modelFromReader(config, this.module.getClassLoader()));
-        builder.filter(OpenApiProcessor.getFilter(config, this.module.getClassLoader()));
+        builder.annotationsModel(OpenApiProcessor.modelFromAnnotations(config, this.module.getClassLoader(), indexView, Functions.constantSupplier(SCANNERS)));
+        builder.readerModel(OpenApiProcessor.modelFromReader(config, this.module.getClassLoader(), indexView));
+        builder.filter(OpenApiProcessor.getFilter(config, this.module.getClassLoader(), indexView));
         OpenAPI model = builder.build();
 
         // Generate default title and description based on web metadata
@@ -249,46 +238,6 @@ public class OpenAPIModelServiceConfigurator extends SimpleServiceNameProvider i
         } catch (MalformedURLException e) {
             // Skip listeners with no known URLStreamHandler (e.g. AJP)
             return null;
-        }
-    }
-
-    private static class CompositeClassLoader extends ClassLoader {
-        private final List<ClassLoader> loaders;
-
-        CompositeClassLoader(List<ClassLoader> loaders) {
-            this.loaders = loaders;
-        }
-
-        @Override
-        public Enumeration<URL> getResources(String name) throws IOException {
-            List<URL> result = new LinkedList<>();
-            for (ClassLoader loader : this.loaders) {
-                result.addAll(Collections.list(loader.getResources(name)));
-            }
-            return Collections.enumeration(result);
-        }
-
-        @Override
-        protected URL findResource(String name) {
-            for (ClassLoader loader : this.loaders) {
-                URL url = loader.getResource(name);
-                if (url != null) {
-                    return url;
-                }
-            }
-            return super.findResource(name);
-        }
-
-        @Override
-        protected Class<?> findClass(String name) throws ClassNotFoundException {
-            for (ClassLoader loader : this.loaders) {
-                try {
-                    return loader.loadClass(name);
-                } catch (ClassNotFoundException e) {
-                    // try again
-                }
-            }
-            return super.findClass(name);
         }
     }
 }

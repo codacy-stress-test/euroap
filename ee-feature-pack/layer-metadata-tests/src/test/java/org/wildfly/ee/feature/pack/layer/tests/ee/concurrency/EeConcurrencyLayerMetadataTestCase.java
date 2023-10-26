@@ -1,3 +1,8 @@
+/*
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package org.wildfly.ee.feature.pack.layer.tests.ee.concurrency;
 
 import org.junit.Test;
@@ -7,11 +12,11 @@ import java.nio.file.Path;
 
 public class EeConcurrencyLayerMetadataTestCase extends AbstractLayerMetaDataTestCase {
     @Test
-    public void testEeConcurrencyUsageDetected() throws Exception {
+    public void testEeConcurrencyUsageDetected() {
         Path p = createArchiveBuilder(ArchiveType.WAR)
                 .addClasses(EeConcurrencyClassUsage.class)
                 .build();
-        checkLayersForArchive(p, "ee-concurrency");
+        checkLayersForArchive(p, new ExpectedLayers("ee-concurrency", "ee-concurrency"));
     }
 
 }

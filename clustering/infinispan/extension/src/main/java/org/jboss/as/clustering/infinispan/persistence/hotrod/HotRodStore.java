@@ -1,23 +1,6 @@
 /*
- * JBoss, Home of Professional Open Source.
- * Copyright 2018, Red Hat, Inc., and individual contributors
- * as indicated by the @author tags. See the copyright.txt file in the
- * distribution for a full listing of individual contributors.
- *
- * This is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of
- * the License, or (at your option) any later version.
- *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this software; if not, write to the Free
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 package org.jboss.as.clustering.infinispan.persistence.hotrod;
@@ -44,6 +27,7 @@ import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 import org.infinispan.Cache;
+import org.infinispan.client.hotrod.DataFormat;
 import org.infinispan.client.hotrod.DefaultTemplate;
 import org.infinispan.client.hotrod.Flag;
 import org.infinispan.client.hotrod.RemoteCache;
@@ -51,6 +35,7 @@ import org.infinispan.client.hotrod.configuration.NearCacheMode;
 import org.infinispan.client.hotrod.configuration.RemoteCacheConfigurationBuilder;
 import org.infinispan.client.hotrod.configuration.TransactionMode;
 import org.infinispan.commons.configuration.ConfiguredBy;
+import org.infinispan.commons.dataconversion.MediaType;
 import org.infinispan.commons.io.ByteBuffer;
 import org.infinispan.commons.util.IntSet;
 import org.infinispan.commons.util.IntSets;
@@ -79,6 +64,7 @@ import org.wildfly.common.function.Functions;
 @ConfiguredBy(HotRodStoreConfiguration.class)
 public class HotRodStore<K, V> implements NonBlockingStore<K, V> {
     private static final Set<Characteristic> CHARACTERISTICS = EnumSet.of(Characteristic.SHAREABLE, Characteristic.BULK_READ, Characteristic.EXPIRATION, Characteristic.SEGMENTABLE);
+    private static final DataFormat BINARY_DATA_FORMAT = DataFormat.builder().keyType(MediaType.APPLICATION_OCTET_STREAM).valueType(MediaType.APPLICATION_OCTET_STREAM).build();
 
     private volatile RemoteCacheContainer container;
     private volatile AtomicReferenceArray<RemoteCache<ByteBuffer, ByteBuffer>> caches;
@@ -179,7 +165,7 @@ public class HotRodStore<K, V> implements NonBlockingStore<K, V> {
         if (cache == null) return CompletableFuture.completedStage(null);
         Metadata metadata = entry.getMetadata();
         try {
-            return cache.putAsync(entry.getKeyBytes(), this.marshalValue(entry.getMarshalledValue()), metadata.lifespan(), TimeUnit.MILLISECONDS, metadata.maxIdle(), TimeUnit.MILLISECONDS)
+            return cache.withFlags(Flag.SKIP_LISTENER_NOTIFICATION).putAsync(entry.getKeyBytes(), this.marshalValue(entry.getMarshalledValue()), metadata.lifespan(), TimeUnit.MILLISECONDS, metadata.maxIdle(), TimeUnit.MILLISECONDS)
                     .thenAcceptAsync(Functions.discardingConsumer(), this.executor);
         } catch (PersistenceException e) {
             return CompletableFuture.failedStage(e);
@@ -191,7 +177,7 @@ public class HotRodStore<K, V> implements NonBlockingStore<K, V> {
         RemoteCache<ByteBuffer, ByteBuffer> cache = this.segmentCache(segment);
         if (cache == null) return CompletableFuture.completedStage(null);
         try {
-            return cache.withFlags(Flag.FORCE_RETURN_VALUE).removeAsync(this.marshalKey(key))
+            return cache.withFlags(Flag.FORCE_RETURN_VALUE, Flag.SKIP_LISTENER_NOTIFICATION).removeAsync(this.marshalKey(key))
                     .thenApplyAsync(Objects::nonNull, this.executor);
         } catch (PersistenceException e) {
             return CompletableFuture.failedStage(e);
@@ -267,7 +253,7 @@ public class HotRodStore<K, V> implements NonBlockingStore<K, V> {
         for (int i = 0; i < this.caches.length(); ++i) {
             RemoteCache<ByteBuffer, ByteBuffer> cache = this.caches.get(i);
             if (cache != null) {
-                result = CompletableFuture.allOf(result, cache.clearAsync().thenApplyAsync(Function.identity(), this.executor));
+                result = CompletableFuture.allOf(result, cache.withFlags(Flag.SKIP_LISTENER_NOTIFICATION).clearAsync().thenApplyAsync(Function.identity(), this.executor));
             }
         }
         return result;
@@ -319,7 +305,7 @@ public class HotRodStore<K, V> implements NonBlockingStore<K, V> {
 
                 cache.start();
 
-                this.caches.set(index, cache);
+                this.caches.set(index, cache.withDataFormat(BINARY_DATA_FORMAT));
             }, "hotrod-store-add-segments").toCompletableFuture());
         }
         return result;

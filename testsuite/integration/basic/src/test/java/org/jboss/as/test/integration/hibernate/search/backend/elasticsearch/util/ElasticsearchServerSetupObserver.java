@@ -1,3 +1,8 @@
+/*
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package org.jboss.as.test.integration.hibernate.search.backend.elasticsearch.util;
 
 import org.jboss.arquillian.container.spi.event.StartClassContainers;
@@ -9,7 +14,7 @@ import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ElasticsearchServerSetupObserver {
-    private static final String ELASTICSEARCH_IMAGE = "docker.elastic.co/elasticsearch/elasticsearch:8.9.0";
+    private static final String ELASTICSEARCH_IMAGE = "docker.elastic.co/elasticsearch/elasticsearch:8.10.2";
 
     private static final AtomicReference<String> httpHostAddress = new AtomicReference<>();
 

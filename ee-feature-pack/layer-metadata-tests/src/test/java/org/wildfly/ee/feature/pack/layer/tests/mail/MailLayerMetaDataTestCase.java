@@ -1,3 +1,8 @@
+/*
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package org.wildfly.ee.feature.pack.layer.tests.mail;
 
 import org.junit.Test;
@@ -7,39 +12,39 @@ import java.nio.file.Path;
 
 public class MailLayerMetaDataTestCase extends AbstractLayerMetaDataTestCase {
     @Test
-    public void testAnnotationFromRootPackageUsage() throws Exception {
+    public void testAnnotationFromRootPackageUsage() {
         testSingleClassWar(MailAnnotationFromRootPackageUsage.class);
     }
 
     @Test
-    public void testClassFromRootPackageUsage() throws Exception {
+    public void testClassFromRootPackageUsage() {
         testSingleClassWar(MailClassFromRootPackageUsage.class);
     }
 
     @Test
-    public void testClassFromEventPackageUsage() throws Exception {
+    public void testClassFromEventPackageUsage() {
         testSingleClassWar(MailClassFromEventPackageUsage.class);
     }
 
     @Test
-    public void testClassFromInternetPackageUsage() throws Exception {
+    public void testClassFromInternetPackageUsage() {
         testSingleClassWar(MailClassFromInternetPackageUsage.class);
     }
 
     @Test
-    public void testClassFromSearchPackageUsage() throws Exception {
+    public void testClassFromSearchPackageUsage() {
         testSingleClassWar(MailClassFromSearchPackageUsage.class);
     }
 
     @Test
-    public void testClassFromUtilPackageUsage() throws Exception {
+    public void testClassFromUtilPackageUsage() {
         testSingleClassWar(MailClassFromUtilPackageUsage.class);
     }
 
-    private void testSingleClassWar(Class<?> clazz) throws Exception {
+    private void testSingleClassWar(Class<?> clazz) {
         Path p = createArchiveBuilder(ArchiveType.WAR)
                 .addClasses(clazz)
                 .build();
-        checkLayersForArchive(p, "mail");
+        checkLayersForArchive(p, new ExpectedLayers("mail", "mail"));
     }
 }

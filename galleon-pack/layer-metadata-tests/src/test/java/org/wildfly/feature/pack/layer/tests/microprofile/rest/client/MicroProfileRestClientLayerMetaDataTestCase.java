@@ -1,3 +1,8 @@
+/*
+ * Copyright The WildFly Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package org.wildfly.feature.pack.layer.tests.microprofile.rest.client;
 
 import org.junit.Test;
@@ -8,34 +13,34 @@ import java.nio.file.Path;
 public class MicroProfileRestClientLayerMetaDataTestCase extends AbstractLayerMetaDataTestCase {
 
     @Test
-    public void testClassFromRootPackage() throws Exception {
+    public void testClassFromRootPackage() {
         testSingleClassWar(MicroProfileRestClientClassFromRootPackageUsage.class);
     }
 
     @Test
-    public void testClassFromExtPackage() throws Exception {
+    public void testClassFromExtPackage() {
         testSingleClassWar(MicroProfileRestClientClassFromExtPackageUsage.class);
     }
 
     @Test
-    public void testClassFromSpiPackage() throws Exception {
+    public void testClassFromSpiPackage() {
         testSingleClassWar(MicroProfileRestClientClassFromSpiPackageUsage.class);
     }
 
     @Test
-    public void testAnnotationFromAnnotationsPackage() throws Exception {
+    public void testAnnotationFromAnnotationsPackage() {
         testSingleClassWar(MicroProfileRestClientAnnotationFromAnnotationsPackageUsage.class);
     }
 
     @Test
-    public void testAnnotationFromInjectPackage() throws Exception {
+    public void testAnnotationFromInjectPackage() {
         testSingleClassWar(MicroProfileRestClientAnnotationFromInjectPackageUsage.class);
     }
 
-    private void testSingleClassWar(Class<?> clazz) throws Exception {
+    private void testSingleClassWar(Class<?> clazz) {
         Path p = createArchiveBuilder(ArchiveType.WAR)
                 .addClasses(clazz)
                 .build();
-        checkLayersForArchive(p, "microprofile-rest-client");
+        checkLayersForArchive(p, new ExpectedLayers("microprofile-rest-client", "microprofile-rest-client"));
     }
 }
