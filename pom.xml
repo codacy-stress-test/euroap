@@ -293,7 +293,7 @@
             This is not limited to plugin versions. Other artifacts that those plugins depend upon can go here
             if they are not otherwise used.
          -->
-        <version.ant.junit>1.10.13</version.ant.junit>
+        <version.ant.junit>1.10.14</version.ant.junit>
         <version.asciidoctor.plugin>2.2.2</version.asciidoctor.plugin>
         <version.org.jacoco>0.8.10</version.org.jacoco>
         <version.org.jboss.galleon>5.2.1.Final</version.org.jboss.galleon>
@@ -318,7 +318,6 @@
         <version.com.beust>1.78</version.com.beust>
         <version.com.github.tomakehurst.wiremock>2.27.2</version.com.github.tomakehurst.wiremock>
         <version.dom4j>2.1.3</version.dom4j>
-        <version.groovy-all>4.0.4</version.groovy-all>
         <version.httpunit>1.7.2</version.httpunit>
         <legacy.version.io.netty>4.0.13.Final</legacy.version.io.netty>
         <version.io.rest-assured>3.0.6</version.io.rest-assured>
@@ -328,12 +327,13 @@
         <version.jsoup>1.15.4</version.jsoup>
         <version.junit>4.13.1</version.junit>
         <version.org.apache.ds>2.0.0.AM26</version.org.apache.ds>
+        <version.org.apache.groovy>4.0.15</version.org.apache.groovy>
         <version.org.awaitility.awaitility>4.0.2</version.org.awaitility.awaitility>
         <version.org.codehaus.plexus.plexus-utils>3.5.0</version.org.codehaus.plexus.plexus-utils>
-        <version.org.eclipse.jetty>9.4.52.v20230823</version.org.eclipse.jetty>
+        <version.org.eclipse.jetty>9.4.53.v20231009</version.org.eclipse.jetty>
         <version.org.hamcrest>2.2</version.org.hamcrest>
         <version.org.hamcrest.legacy>1.3</version.org.hamcrest.legacy>
-        <version.org.javassist>3.29.1-GA</version.org.javassist>
+        <version.org.javassist>3.29.2-GA</version.org.javassist>
         <version.org.jboss.arquillian.core>1.7.1.Final</version.org.jboss.arquillian.core>
         <version.org.jboss.byteman>4.0.21</version.org.jboss.byteman>
         <version.org.jboss.logmanager.commons-logging-jboss-logmanager>1.0.3.Final</version.org.jboss.logmanager.commons-logging-jboss-logmanager>
@@ -372,6 +372,7 @@
         <version.com.github.fge.jackson-coreutils>1.8</version.com.github.fge.jackson-coreutils>
         <version.com.github.fge.json-patch>1.9</version.com.github.fge.json-patch>
         <version.com.github.fge.msg-simple>1.1</version.com.github.fge.msg-simple>
+        <version.com.github.luben.zstd-jni>1.5.2-1</version.com.github.luben.zstd-jni>
         <version.com.google.api.grpc>2.0.1</version.com.google.api.grpc>
         <version.com.google.code.gson>2.8.9</version.com.google.code.gson>
         <version.com.google.guava>32.1.2-jre</version.com.google.guava>
@@ -385,7 +386,7 @@
         <legacy.version.com.squareup.okhttp>3.14.9</legacy.version.com.squareup.okhttp>
         <version.com.squareup.okio-jvm>3.4.0</version.com.squareup.okio-jvm>
         <version.com.squareup.protoparser>4.0.3</version.com.squareup.protoparser>
-        <version.com.sun.istack>4.1.1</version.com.sun.istack>
+        <version.com.sun.istack>4.1.2</version.com.sun.istack>
         <version.com.sun.xml.fastinfoset>2.1.0</version.com.sun.xml.fastinfoset>
         <version.com.sun.xml.messaging.saaj>3.0.0</version.com.sun.xml.messaging.saaj>
         <version.commons-beanutils>1.9.4</version.commons-beanutils>
@@ -413,7 +414,7 @@
         <version.io.smallrye.smallrye-mutiny-zero>1.0.0</version.io.smallrye.smallrye-mutiny-zero>
         <version.io.smallrye.smallrye-opentelemetry>2.3.2</version.io.smallrye.smallrye-opentelemetry>
         <version.io.smallrye.smallrye-reactive-messaging>4.9.0</version.io.smallrye.smallrye-reactive-messaging>
-        <version.io.undertow.jastow>2.2.6.Final</version.io.undertow.jastow>
+        <version.io.undertow.jastow>2.2.7.Final</version.io.undertow.jastow>
         <version.io.vertx.vertx>4.4.6</version.io.vertx.vertx>
         <version.io.vertx.vertx-kafka-client>4.4.6</version.io.vertx.vertx-kafka-client>
         <version.jakarta.activation.jakarta.activation-api>2.1.2</version.jakarta.activation.jakarta.activation-api>
@@ -438,12 +439,12 @@
         <version.jakarta.validation.jakarta-validation-api>3.0.2</version.jakarta.validation.jakarta-validation-api>
         <version.jakarta.websocket.jakarta-websocket-api>2.1.0-jbossorg-2</version.jakarta.websocket.jakarta-websocket-api>
         <version.jakarta.ws.rs.jakarta-ws-rs-api>3.1.0</version.jakarta.ws.rs.jakarta-ws-rs-api>
-        <version.jakarta.xml.bind.jakarta-xml-bind-api>4.0.0</version.jakarta.xml.bind.jakarta-xml-bind-api>
+        <version.jakarta.xml.bind.jakarta-xml-bind-api>4.0.1</version.jakarta.xml.bind.jakarta-xml-bind-api>
         <version.jboss.jaxbintros>2.0.1</version.jboss.jaxbintros>
         <version.joda-time>2.12.1</version.joda-time>
         <version.net.jcip>1.0</version.net.jcip>
         <version.net.shibboleth.utilities.java-support>8.0.0</version.net.shibboleth.utilities.java-support>
-        <version.org.apache.activemq.artemis>2.31.0</version.org.apache.activemq.artemis>
+        <version.org.apache.activemq.artemis>2.31.2</version.org.apache.activemq.artemis>
         <version.org.apache.activemq.artemis.native>2.0.0</version.org.apache.activemq.artemis.native>
         <version.org.apache.avro>1.11.3</version.org.apache.avro>
         <version.org.apache.cxf>4.0.0</version.org.apache.cxf>
@@ -466,7 +467,7 @@
         <version.org.cryptacular>1.2.5</version.org.cryptacular>
         <version.org.eclipse.angus.angus-activation>2.0.1</version.org.eclipse.angus.angus-activation>
         <version.org.eclipse.angus.angus-mail>2.0.2</version.org.eclipse.angus.angus-mail>
-        <version.org.eclipse.jdt>3.31.0</version.org.eclipse.jdt>
+        <version.org.eclipse.jdt>3.32.0</version.org.eclipse.jdt>
         <version.org.eclipse.microprofile>6.0</version.org.eclipse.microprofile>
         <version.org.eclipse.microprofile.config.api>3.0.2</version.org.eclipse.microprofile.config.api>
         <version.org.eclipse.microprofile.fault-tolerance.api>4.0.2</version.org.eclipse.microprofile.fault-tolerance.api>
@@ -483,7 +484,7 @@
         <version.org.elasticsearch.client.rest-client>8.10.2</version.org.elasticsearch.client.rest-client>
         <version.org.glassfish.expressly>5.0.0</version.org.glassfish.expressly>
         <version.org.glassfish.jakarta.enterprise.concurrent>3.0.0</version.org.glassfish.jakarta.enterprise.concurrent>
-        <version.org.glassfish.jaxb>4.0.1</version.org.glassfish.jaxb>
+        <version.org.glassfish.jaxb>4.0.4</version.org.glassfish.jaxb>
         <version.org.glassfish.jaxb.jaxb-xjc>${version.org.glassfish.jaxb}</version.org.glassfish.jaxb.jaxb-xjc>
         <version.org.glassfish.soteria>3.0.3</version.org.glassfish.soteria>
         <version.org.glassfish.web.jakarta.servlet.jsp.jstl>3.0.0</version.org.glassfish.web.jakarta.servlet.jsp.jstl>
@@ -495,7 +496,7 @@
         <version.org.infinispan>14.0.17.Final</version.org.infinispan>
         <version.org.infinispan.protostream>4.6.5.Final</version.org.infinispan.protostream>
         <version.org.jasypt>1.9.3</version.org.jasypt>
-        <version.org.jberet>2.1.2.Final</version.org.jberet>
+        <version.org.jberet>2.1.3.Final</version.org.jberet>
         <version.org.jboss.activemq.artemis.integration>2.0.2.Final</version.org.jboss.activemq.artemis.integration>
         <version.org.jboss.common.jboss-common-beans>2.0.1.Final</version.org.jboss.common.jboss-common-beans>
         <version.org.jboss.ejb-client>5.0.5.Final</version.org.jboss.ejb-client>
@@ -509,7 +510,7 @@
         <version.org.jboss.mod_cluster>2.0.3.Final</version.org.jboss.mod_cluster>
         <version.org.jboss.narayana>7.0.0.Final</version.org.jboss.narayana>
         <version.org.jboss.openjdk-orb>10.0.0.Final</version.org.jboss.openjdk-orb>
-        <version.org.jboss.resteasy>6.2.5.Final</version.org.jboss.resteasy>
+        <version.org.jboss.resteasy>6.2.6.Final</version.org.jboss.resteasy>
         <version.org.jboss.resteasy.extensions>2.0.1.Final</version.org.jboss.resteasy.extensions>
         <version.org.jboss.resteasy.microprofile>2.1.4.Final</version.org.jboss.resteasy.microprofile>
         <version.org.jboss.resteasy.spring>3.0.4.Final</version.org.jboss.resteasy.spring>
@@ -535,17 +536,19 @@
         <version.org.jvnet.staxex>2.1.0</version.org.jvnet.staxex>
         <version.org.keycloak.keycloak-saml-wildfly-subsystem>18.0.2</version.org.keycloak.keycloak-saml-wildfly-subsystem>
         <version.org.kohsuke.metainf-services>1.11</version.org.kohsuke.metainf-services>
+        <version.org.lz4.lz4-java>1.8.0</version.org.lz4.lz4-java>
         <version.org.opensaml.opensaml>4.2.0</version.org.opensaml.opensaml>
         <version.org.ow2.asm>9.5</version.org.ow2.asm>
         <version.org.reactivestreams>1.0.4</version.org.reactivestreams>
-        <version.org.wildfly.core>22.0.1.Final</version.org.wildfly.core>
-        <version.org.wildfly.http-client>2.0.2.Final</version.org.wildfly.http-client>
+        <version.org.wildfly.core>23.0.0.Beta1</version.org.wildfly.core>
+        <version.org.wildfly.http-client>2.0.5.Final</version.org.wildfly.http-client>
         <version.org.wildfly.naming-client>2.0.1.Final</version.org.wildfly.naming-client>
         <version.org.wildfly.security.elytron-mp>2.0.0.Final</version.org.wildfly.security.elytron-mp>
         <version.org.wildfly.transaction.client>3.0.2.Final</version.org.wildfly.transaction.client>
         <preview.version.org.wildfly.wildfly-ee-9-deployment-transformer>1.0.0.Final</preview.version.org.wildfly.wildfly-ee-9-deployment-transformer>
         <version.software.amazon.awssdk>2.20.126</version.software.amazon.awssdk>
         <version.software.amazon.eventstream>1.0.1</version.software.amazon.eventstream>
+        <version.org.xerial.snappy.snappy-java>1.1.8.4</version.org.xerial.snappy.snappy-java>
         <version.sun.jaxb>${version.org.glassfish.jaxb}</version.sun.jaxb>
         <version.wsdl4j>1.6.3</version.wsdl4j>
         <version.xml-resolver>1.2</version.xml-resolver>
