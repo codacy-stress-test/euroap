@@ -297,7 +297,7 @@
         <version.asciidoctor.plugin>2.2.4</version.asciidoctor.plugin>
         <version.org.jacoco>0.8.11</version.org.jacoco>
         <version.org.jboss.galleon>5.2.2.Final</version.org.jboss.galleon>
-        <version.org.wildfly.glow>1.0.0.Beta1</version.org.wildfly.glow>
+        <version.org.wildfly.glow>1.0.0.Beta5</version.org.wildfly.glow>
         <version.org.jboss.wildscribe>2.1.0.Final</version.org.jboss.wildscribe>
         <version.org.wildfly.bom-builder-plugin>2.0.6.Final</version.org.wildfly.bom-builder-plugin>
         <version.org.wildfly.checkstyle-config>1.0.8.Final</version.org.wildfly.checkstyle-config>
@@ -327,7 +327,7 @@
         <version.jsoup>1.15.4</version.jsoup>
         <version.junit>4.13.1</version.junit>
         <version.org.apache.ds>2.0.0.AM26</version.org.apache.ds>
-        <version.org.apache.groovy>4.0.16</version.org.apache.groovy>
+        <version.org.apache.groovy>4.0.17</version.org.apache.groovy>
         <version.org.awaitility.awaitility>4.0.3</version.org.awaitility.awaitility>
         <version.org.codehaus.plexus.plexus-utils>3.5.1</version.org.codehaus.plexus.plexus-utils>
         <version.org.eclipse.jetty>9.4.53.v20231009</version.org.eclipse.jetty>
@@ -361,7 +361,7 @@
             Properties for dependencies that solely relate to maven plugins go in the plugin section above.
             Properties for dependencies that solely relate to tests go in the test code section above.
          -->
-        <version.antlr>4.10</version.antlr>
+        <version.antlr>4.13.0</version.antlr>
         <version.com.carrotsearch.hppc>0.8.1</version.com.carrotsearch.hppc>
         <version.com.fasterxml.classmate>1.5.1</version.com.fasterxml.classmate>
         <version.com.fasterxml.jackson>2.15.3</version.com.fasterxml.jackson>
@@ -372,13 +372,13 @@
         <version.com.github.fge.jackson-coreutils>1.8</version.com.github.fge.jackson-coreutils>
         <version.com.github.fge.json-patch>1.9</version.com.github.fge.json-patch>
         <version.com.github.fge.msg-simple>1.1</version.com.github.fge.msg-simple>
-        <version.com.github.luben.zstd-jni>1.5.2-1</version.com.github.luben.zstd-jni>
+        <version.com.github.luben.zstd-jni>1.5.5-11</version.com.github.luben.zstd-jni>
         <version.com.google.api.grpc>2.0.1</version.com.google.api.grpc>
         <version.com.google.code.gson>2.8.9</version.com.google.code.gson>
         <version.com.google.guava>32.1.2-jre</version.com.google.guava>
         <version.com.google.guava.failureaccess>1.0.1</version.com.google.guava.failureaccess>
         <version.com.google.protobuf>3.19.6</version.com.google.protobuf>
-        <version.com.h2database>2.2.220</version.com.h2database>
+        <version.com.h2database>2.2.224</version.com.h2database>
         <version.com.ibm.async.asyncutil>0.1.0</version.com.ibm.async.asyncutil>
         <version.com.microsoft.azure>8.6.6</version.com.microsoft.azure>
         <version.com.nimbus.jose-jwt>9.31</version.com.nimbus.jose-jwt>
@@ -461,7 +461,7 @@
         <version.org.apache.velocity>2.3</version.org.apache.velocity>
         <version.org.apache.wss4j>3.0.2</version.org.apache.wss4j>
         <version.org.apache.ws.xmlschema>2.3.0</version.org.apache.ws.xmlschema>
-        <version.org.bitbucket.jose4j>0.9.3</version.org.bitbucket.jose4j>
+        <version.org.bitbucket.jose4j>0.9.4</version.org.bitbucket.jose4j>
         <version.org.bytebuddy>1.14.7</version.org.bytebuddy>
         <version.org.codehaus.woodstox.stax2-api>4.2.2</version.org.codehaus.woodstox.stax2-api>
         <version.org.codehaus.woodstox.woodstox-core>6.4.0</version.org.codehaus.woodstox.woodstox-core>
@@ -490,7 +490,7 @@
         <version.org.glassfish.soteria>3.0.3</version.org.glassfish.soteria>
         <version.org.glassfish.web.jakarta.servlet.jsp.jstl>3.0.1</version.org.glassfish.web.jakarta.servlet.jsp.jstl>
         <version.org.hibernate.commons.annotations>6.0.6.Final</version.org.hibernate.commons.annotations>
-        <version.org.hibernate>6.4.1.Final</version.org.hibernate>
+        <version.org.hibernate>6.4.2.Final</version.org.hibernate>
         <version.org.hibernate.search>7.0.0.Final</version.org.hibernate.search>
         <version.org.hibernate.validator>8.0.1.Final</version.org.hibernate.validator>
         <version.org.hornetq>2.4.9.Final</version.org.hornetq>
@@ -503,17 +503,17 @@
         <version.org.jboss.ejb-client>5.0.5.Final</version.org.jboss.ejb-client>
         <version.org.jboss.ejb3.ext-api>2.4.0.Final</version.org.jboss.ejb3.ext-api>
         <version.org.jboss.genericjms>3.0.0.Final</version.org.jboss.genericjms>
-        <version.org.jboss.hal.console>3.6.16.Final</version.org.jboss.hal.console>
+        <version.org.jboss.hal.console>3.6.17.Final</version.org.jboss.hal.console>
         <version.org.jboss.iiop-client>2.0.1.Final</version.org.jboss.iiop-client>
-        <version.org.jboss.ironjacamar>3.0.7.Final</version.org.jboss.ironjacamar>
+        <version.org.jboss.ironjacamar>3.0.8.Final</version.org.jboss.ironjacamar>
         <version.org.jboss.jboss-transaction-spi>8.0.0.Final</version.org.jboss.jboss-transaction-spi>
         <version.org.jboss.metadata>16.0.0.Final</version.org.jboss.metadata>
         <version.org.jboss.mod_cluster>2.0.4.Final</version.org.jboss.mod_cluster>
         <version.org.jboss.narayana>7.0.0.Final</version.org.jboss.narayana>
         <version.org.jboss.openjdk-orb>10.0.0.Final</version.org.jboss.openjdk-orb>
-        <version.org.jboss.resteasy>6.2.6.Final</version.org.jboss.resteasy>
+        <version.org.jboss.resteasy>6.2.7.Final</version.org.jboss.resteasy>
         <version.org.jboss.resteasy.extensions>2.0.1.Final</version.org.jboss.resteasy.extensions>
-        <version.org.jboss.resteasy.microprofile>2.1.4.Final</version.org.jboss.resteasy.microprofile>
+        <version.org.jboss.resteasy.microprofile>2.1.5.Final</version.org.jboss.resteasy.microprofile>
         <version.org.jboss.resteasy.spring>3.0.4.Final</version.org.jboss.resteasy.spring>
         <version.org.jboss.spec.jakarta.el.jboss-el-api_5.0_spec>4.0.1.Final</version.org.jboss.spec.jakarta.el.jboss-el-api_5.0_spec>
         <version.org.jboss.spec.jakarta.xml.soap.saaj-api_3.0_spec>1.0.0.Final</version.org.jboss.spec.jakarta.xml.soap.saaj-api_3.0_spec>
@@ -540,9 +540,9 @@
         <version.org.opensaml.opensaml>4.2.0</version.org.opensaml.opensaml>
         <version.org.ow2.asm>9.5</version.org.ow2.asm>
         <version.org.reactivestreams>1.0.4</version.org.reactivestreams>
-        <version.org.wildfly.core>23.0.0.Beta5</version.org.wildfly.core>
+        <version.org.wildfly.core>23.0.1.Final</version.org.wildfly.core>
         <version.org.wildfly.http-client>2.0.6.Final</version.org.wildfly.http-client>
-        <preview.version.org.wildfly.mvc.krazo>0.8.0.Final</preview.version.org.wildfly.mvc.krazo>
+        <preview.version.org.wildfly.mvc.krazo>0.8.2.Final</preview.version.org.wildfly.mvc.krazo>
         <version.org.wildfly.naming-client>2.0.1.Final</version.org.wildfly.naming-client>
         <version.org.wildfly.security.elytron-mp>2.0.0.Final</version.org.wildfly.security.elytron-mp>
         <version.org.wildfly.transaction.client>3.0.3.Final</version.org.wildfly.transaction.client>
