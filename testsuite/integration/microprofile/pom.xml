@@ -17,7 +17,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>32.0.0.Beta1-SNAPSHOT</version>
+        <version>32.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>wildfly-ts-integ-microprofile</artifactId>
@@ -35,8 +35,6 @@
 
         <ts.glow.phase>none</ts.glow.phase>
         <ts.glow.config-name>standalone-microprofile.xml</ts.glow.config-name>
-        <!-- By default (i.e. Java EE9+) use the following directory as an additional source -->
-        <ts.microprofile.build-helper.source.dir>src/test/jakarta/java</ts.microprofile.build-helper.source.dir>
 
         <!-- Use the expansion bom -->
         <dependency.management.import.artifact>wildfly-standard-expansion-bom</dependency.management.import.artifact>
@@ -326,6 +324,11 @@
             <artifactId>smallrye-opentelemetry-api</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-opentelemetry-api</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Other test dependencies -->
         <dependency>
@@ -356,6 +359,11 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-json-p-provider</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-json-binding-provider</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -902,9 +910,8 @@
             </dependencies>
             <properties>
                 <ts.glow.phase>test-compile</ts.glow.phase>
+                <ts.glow.config-name>standalone.xml</ts.glow.config-name>
                 <bootable-jar-packaging.phase>test-compile</bootable-jar-packaging.phase>
-                <ts.config-as.copy-mgmt-users.phase>test</ts.config-as.copy-mgmt-users.phase>
-                <extra.server.jvm.args>-Dmaven.repo.local=${settings.localRepository}</extra.server.jvm.args>
 
                 <!-- Use the WFP dependencyManagement set.
                      This is set in this profile in a parent module, but the explicit global override

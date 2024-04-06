@@ -16,7 +16,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>32.0.0.Beta1-SNAPSHOT</version>
+        <version>32.0.0.Final-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -37,6 +37,8 @@
                         <manifestEntries>
                             <JBoss-Product-Release-Name>${preview.dist.product.release.name}</JBoss-Product-Release-Name>
                             <JBoss-Product-Release-Version>${preview.dist.product.release.version}</JBoss-Product-Release-Version>
+                            <JBoss-Product-Stability>preview</JBoss-Product-Stability>
+                            <JBoss-Product-Minimum-Stability>experimental</JBoss-Product-Minimum-Stability>
                         </manifestEntries>
                     </archive>
                 </configuration>

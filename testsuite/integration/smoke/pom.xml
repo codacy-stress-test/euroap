@@ -16,7 +16,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>32.0.0.Beta1-SNAPSHOT</version>
+        <version>32.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <!-- ********************************************************************************** -->
@@ -607,6 +607,19 @@
                             </plugin-options>
                             <provisioning-file>target/glow-scan/microprofile.surefire/provisioning.xml</provisioning-file>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <!-- Enable adding a second test source dir for EE-version-specific classes.
+                         The execution is configured in testsuite/pom.xml for use in submodules
+                         like this one that need it. -->
+                    <execution>
+                        <id>add-ee-test-source</id>
+                        <phase>generate-test-sources</phase>
                     </execution>
                 </executions>
             </plugin>
