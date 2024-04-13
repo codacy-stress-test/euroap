@@ -317,7 +317,7 @@
         <version.asciidoctor.plugin>2.2.6</version.asciidoctor.plugin>
         <version.org.jacoco>0.8.11</version.org.jacoco>
         <version.org.jboss.galleon>6.0.0.Beta6</version.org.jboss.galleon>
-        <version.org.wildfly.glow>1.0.0.Beta12</version.org.wildfly.glow>
+        <version.org.wildfly.glow>1.0.0.Beta13</version.org.wildfly.glow>
         <version.org.jboss.wildscribe>2.1.0.Final</version.org.jboss.wildscribe>
         <version.org.wildfly.bom-builder-plugin>2.0.6.Final</version.org.wildfly.bom-builder-plugin>
         <version.org.wildfly.checkstyle-config>1.0.8.Final</version.org.wildfly.checkstyle-config>
@@ -529,7 +529,7 @@
         <version.org.jboss.genericjms>3.0.0.Final</version.org.jboss.genericjms>
         <version.org.jboss.hal.console>3.7.0.Final</version.org.jboss.hal.console>
         <version.org.jboss.iiop-client>2.0.1.Final</version.org.jboss.iiop-client>
-        <version.org.jboss.ironjacamar>3.0.8.Final</version.org.jboss.ironjacamar>
+        <version.org.jboss.ironjacamar>3.0.9.Final</version.org.jboss.ironjacamar>
         <version.org.jboss.jboss-transaction-spi>8.0.0.Final</version.org.jboss.jboss-transaction-spi>
         <version.org.jboss.metadata>16.0.0.Final</version.org.jboss.metadata>
         <version.org.jboss.mod_cluster>2.0.4.Final</version.org.jboss.mod_cluster>
@@ -570,7 +570,7 @@
         <version.org.wildfly.naming-client>2.0.1.Final</version.org.wildfly.naming-client>
         <version.org.wildfly.security.elytron-mp>2.0.0.Final</version.org.wildfly.security.elytron-mp>
         <version.org.wildfly.transaction.client>3.0.5.Final</version.org.wildfly.transaction.client>
-        <preview.version.org.wildfly.wildfly-ee-9-deployment-transformer>1.0.0.Final</preview.version.org.wildfly.wildfly-ee-9-deployment-transformer>
+        <preview.version.org.wildfly.wildfly-ee-9-deployment-transformer>2.0.0.Final</preview.version.org.wildfly.wildfly-ee-9-deployment-transformer>
         <version.software.amazon.awssdk>2.20.126</version.software.amazon.awssdk>
         <version.software.amazon.eventstream>1.0.1</version.software.amazon.eventstream>
         <version.org.xerial.snappy.snappy-java>1.1.10.5</version.org.xerial.snappy.snappy-java>
