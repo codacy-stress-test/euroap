@@ -16,7 +16,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>33.0.0.Beta1-SNAPSHOT</version>
+        <version>33.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>wildfly-ee-feature-pack-galleon-shared</artifactId>
@@ -4114,6 +4114,29 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.unstable.api.annotation</groupId>
+                <artifactId>unstable-api-annotation-classpath-indexer-plugin</artifactId>
+                <configuration>
+                    <outputFile>${project.build.directory}/index/wildfly-ee-feature-pack.zip</outputFile>
+                    <filters>
+                        <filter>
+                            <annotation>org.hibernate.Incubating</annotation>
+                            <groupIds>
+                                <groupId>org.hibernate</groupId>
+                                <groupId>org.hibernate.*</groupId>
+                            </groupIds>
+                        </filter>
+                        <filter>
+                            <annotation>org.hibernate.validator.Incubating</annotation>
+                            <groupIds>
+                                <groupId>org.hibernate</groupId>
+                                <groupId>org.hibernate.*</groupId>
+                            </groupIds>
+                        </filter>
+                    </filters>
+                </configuration>
             </plugin>
         </plugins>
     </build>
