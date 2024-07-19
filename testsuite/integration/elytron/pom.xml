@@ -17,7 +17,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>33.0.0.Final-SNAPSHOT</version>
+        <version>34.0.0.Beta1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -1075,6 +1075,21 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+
+        <!-- Test against the wildfly-preview feature pack using layers-->
+        <profile>
+            <id>preview.layers.test.profile</id>
+            <activation>
+                <property>
+                    <name>testsuite.ee.galleon.pack.artifactId</name>
+                    <value>wildfly-preview-feature-pack</value>
+                </property>
+            </activation>
+            <properties>
+                <!-- Use preview stability when running the embedded server for pre-surefire-execution setup work -->
+                <embedded.server.stability>preview</embedded.server.stability>
+            </properties>
         </profile>
     </profiles>
 
