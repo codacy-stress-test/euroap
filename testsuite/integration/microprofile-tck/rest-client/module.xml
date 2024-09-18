@@ -5,7 +5,7 @@
   ~ SPDX-License-Identifier: Apache-2.0
   -->
 
-<module xmlns="urn:jboss:module:1.9" name="com.github.tomakehurst.wiremock">
+<module xmlns="urn:jboss:module:1.9" name="org.wiremock">
 
     <resources>
         <resource-root path="wiremock.jar"/>
