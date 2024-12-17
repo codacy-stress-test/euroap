@@ -211,7 +211,7 @@ public class HostExcludesTestCase extends BuildConfigurationTestBase {
             // to the internal mpExtensions Set defined on this class.
             // Don't add here extensions supplied only by the wildfly-preview-feature-pack because we are not tracking different releases
             // of wildfly preview. In such a case, add them to previewExtensions set defined below.
-            return List.of();
+            return List.of("org.wildfly.extension.jakarta.data");
         }
 
         private static List<String> getCurrentRemovedExtensions() {
@@ -263,7 +263,8 @@ public class HostExcludesTestCase extends BuildConfigurationTestBase {
         // to compute on which WildFly Preview was added such a new extension and track the Host Exclusions between
         // different WildFly Preview releases.
         private final Set<String> previewExtensions = new HashSet<>(Arrays.asList(
-                "org.wildfly.extension.jakarta.data"
+                "org.wildfly.extension.jakarta.data",
+                "org.wildfly.extension.vertx"
         ));
 
         ExtensionConf(String name, ExtensionConf parent, boolean supported) {

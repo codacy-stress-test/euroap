@@ -17,7 +17,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>35.0.0.Beta1-SNAPSHOT</version>
+        <version>35.0.0.Final-SNAPSHOT</version>
     </parent>
 
     <artifactId>wildfly-ee-galleon-pack</artifactId>
@@ -254,6 +254,19 @@
         <dependency>
             <groupId>org.wildfly.galleon-plugins</groupId>
             <artifactId>wildfly-config-gen</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Galleon universe dependencies (so that they are present in the channel manifest) -->
+
+        <dependency>
+            <groupId>org.jboss.universe</groupId>
+            <artifactId>community-universe</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.universe.producer</groupId>
+            <artifactId>wildfly-producers</artifactId>
             <scope>provided</scope>
         </dependency>
 

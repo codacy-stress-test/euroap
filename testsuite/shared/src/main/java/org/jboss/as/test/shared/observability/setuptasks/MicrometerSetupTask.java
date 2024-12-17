@@ -13,13 +13,12 @@ import org.jboss.as.controller.client.helpers.Operations;
 import org.jboss.as.test.shared.ServerReload;
 import org.jboss.as.test.shared.observability.containers.OpenTelemetryCollectorContainer;
 import org.jboss.dmr.ModelNode;
-import org.junit.AssumptionViolatedException;
 
 /**
  * Sets up a functioning Micrometer subsystem configuration. Requires functioning Docker environment! Tests using this
  * are expected to call AssumeTestGroupUtil.assumeDockerAvailable(); in a @BeforeClass.
  */
-@DockerRequired(AssumptionViolatedException.class)
+@DockerRequired
 public class MicrometerSetupTask extends AbstractSetupTask {
     private static final ModelNode micrometerExtension = Operations.createAddress("extension", "org.wildfly.extension.micrometer");
     private static final ModelNode micrometerSubsystem = Operations.createAddress("subsystem", "micrometer");
@@ -45,7 +44,7 @@ public class MicrometerSetupTask extends AbstractSetupTask {
                 otelCollector.getOtlpHttpEndpoint() + "/v1/metrics"));
         executeOp(managementClient, writeAttribute("micrometer", "step", "1"));
 
-        ServerReload.reloadIfRequired(managementClient);
+        ServerReload.executeReloadAndWaitForCompletion(managementClient);
     }
 
     @Override
@@ -56,6 +55,6 @@ public class MicrometerSetupTask extends AbstractSetupTask {
         executeOp(managementClient, Operations.createRemoveOperation(micrometerSubsystem));
         executeOp(managementClient, Operations.createRemoveOperation(micrometerExtension));
 
-        ServerReload.reloadIfRequired(managementClient);
+        ServerReload.executeReloadAndWaitForCompletion(managementClient);
     }
 }
